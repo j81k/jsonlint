@@ -28,7 +28,7 @@
                 <ul>
                   <li>{{ data.message.type.upper() }}: {{ data.message.text }}</li>
 
-                  {% if data.message.type == 'error' %}
+                  {% if data.message.type == 'error' and data.message.line %}
                       <li>Line : {{ data.message.line }}</li>
                       <li>Column : {{ data.message.column }}</li>
                   {% endif %}    

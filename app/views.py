@@ -5,6 +5,27 @@ from app import app
 from .forms import InputForm
 from .forms import LoginForm
 
+def dict_raise_on_duplicates(ordered_pairs):
+    """Reject duplicate keys."""
+    d = {}
+    for k, v in ordered_pairs:
+        if k in d:
+           raise ValueError("Duplicate key is found: %r" % (k,))
+        else:
+           d[k] = v
+    return d
+
+def dict_allow_on_duplicates(ordered_pairs):
+	d = {}
+	index = 0
+	for k, v in ordered_pairs:
+		index += 1
+		if k in d:
+			d[k+'--DUPLICATE--'+str(index)] = v
+		else:
+			d[k] = v	
+
+	return d	
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
@@ -37,13 +58,22 @@ def index():
 		data['indent'] = request.form.get('stats_tab_select')
 
 		try :
-			# {  "emails": { "user": "Ashik" }}
+			# {"data": {"name": "Ui","user": "Assk","user": "kio"}}
 
 			try :
-				content = json.dumps(json.loads(content), indent=int(data['indent']), sort_keys=True)
+				if data['form'].duplicate_key.data :
+					content = json.loads(content, object_pairs_hook=dict_raise_on_duplicates)
+				else :
+					content = json.loads(content, object_pairs_hook=dict_allow_on_duplicates)
+				
+				content = json.dumps(content, indent=int(data['indent']), sort_keys=True)
 				content = content.replace('\r\n', '')
-			except:
-				pass
+			except ValueError as e:
+				#pass
+				content = content.replace('\n', '')
+				text = str(e).replace('\n', '')
+				data['message']['type'] = 'error'
+				data['message']['text'] = text.replace('u\'', '\'')
 
 			demjson.decode(content, strict=True)
 			content = content.replace('\n','\r\n') #'&#13;&#10;') 
