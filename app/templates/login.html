@@ -1,0 +1,41 @@
+<!-- extend from base layout -->
+{% extends "layout.html" %}
+
+{% block content %}
+  <script type="text/javascript">
+    
+    function getOpenID(url, providerName)
+    {
+
+      var form = document.forms['login']
+      , userName = url.search('<username>');
+
+      if (userName != -1) {
+        // Found
+        userName = prompt('Please enter the user name for "'+ providerName+'"');
+        url = url.replace('<username>', userName);
+      }
+
+      form.elements['openid'].value = url;  
+    }
+
+  </script>
+  <h1>Sign In</h1>
+  <form action="" method="post" name="login">
+      {{ data.form.hidden_tag() }}
+      <p>
+          Please enter your OpenID or select from the following providers:<br>
+          {{ data.form.openid(size=80) }}<br>
+
+          {% for error in data.form.openid.errors %}
+            <span style="color: #f33;">{{ error }}</span>
+          {% endfor %} <br />  
+
+          |{% for provider in data.providers %}
+            <a href="javascript: getOpenID('{{ provider.url }}', '{{ provider.name }}');">{{ provider.name }}</a> |
+           {% endfor %} 
+      </p>
+      <p>{{ data.form.remember_me }} Remember Me</p>
+      <p><input type="submit" value="Sign In"></p>
+  </form>
+{% endblock %}

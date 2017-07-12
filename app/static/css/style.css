@@ -1,0 +1,201 @@
+body {
+  margin: 0;
+  background: #fafbfc;
+}
+
+header {
+  color: #1ba;
+  padding: 0px 10%;
+  border-bottom: 1px dashed #ccc;
+  background: #fff;
+}
+
+footer {
+  width: 80%;
+  position: fixed;
+  bottom: 0;
+  color: #999;
+  min-height: 20px;
+  text-align: center;
+  padding: 0px 10%;
+}
+
+.btn {
+  padding: 10px;
+  border: none;
+  box-shadow: 1px 1px 3px #666;
+  cursor: pointer;
+  margin: 10px 10px 10px 0px;
+  letter-spacing: 2px;
+  min-width: 100px;
+  color: #666;
+  background: linear-gradient(#ccc, #fff);
+}
+
+.primary {
+  color: #fff;
+  background: #1baadd;
+}
+
+#wrapper {
+  width: 80%;
+  margin: 0 auto;
+}
+
+#header-top {
+  padding: 1px 17px;
+}
+
+#header-top > div {
+  display: inline-block;
+  width: 49%;
+}
+
+
+#welcome-msg {
+  text-align: right;
+  color: #999;
+  font-size: 12px;
+  font-style: italic;
+}
+
+#content {
+  
+}
+
+#json-wrapper {
+  margin: 20px auto;
+  box-shadow: 1px 1px 3px #999;
+  color: #666;
+}
+
+#json-block {
+  width: 98%;
+  padding-bottom: 20px;
+  overflow: hidden;
+  height: 330px;  
+
+  /*height: 300px;
+  overflow: scroll;*/
+}
+
+#line-nos {
+  float: left;
+  min-width: 60px;
+  display: inline-block;
+  text-align: right;
+  padding-top: 5px;
+  letter-spacing: 2px;
+}
+
+.line-no {
+  line-height: 15px;
+  font-size: small;
+  display: none;
+}
+
+.line-no.active {
+  color: #1baadd;
+  background: rgba(100, 100, 100, 0.06);
+  font-weight: bold;
+
+}
+
+.line-no.error {
+  background: rgba(255, 100, 100, 0.9);
+  color: #fff;
+}
+
+#json-inp-block {
+  width: 94%;
+  display: inline-block;
+  letter-spacing: 4px;
+  /*float: right;*/
+}
+
+#json_inp {
+  width: 100%;
+  padding: 10px;
+  height: auto;
+  resize: none;
+  border: 1px dotted #1ba;
+  border-right: none;
+  border-top: none;
+  white-space: nowrap;
+  height: 300px;
+}
+
+#json_inp:focus {
+  outline: none;
+}
+
+#parsed-data {
+  display: none;
+}
+
+#stats {
+  font-size: small;
+}
+
+#stats > div:last-child {
+  float: right;
+}
+
+#stats-tab {
+  border-right: 1px dotted #999;
+  padding-right: 5px;
+}
+
+#stats-tab select {
+  background: #fff;
+  border: 1px dotted #ccc;
+  color: #666;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+#stats-goto {
+  padding-right: 5px;
+  border-right: 1px dotted #999;
+}
+
+#stats-goto input {
+  color: #666;
+  width: 35px;
+  text-align: right;
+  padding-right: 10px;
+  border: 1px solid #ccc;
+}
+
+.error {
+  color: #f33;
+  background: rgba(255, 100, 100, 0.09);
+  border: 1px dotted #f33;
+}
+
+.success {
+  color: #4caf50;
+  background: rgba(76, 175, 80, 0.09);
+  border: 1px dotted #4caf50; 
+}
+
+.msg-box {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 0px;
+  
+}
+
+.msg-box ul {
+  list-style: none;
+}
+
+.msg-box ul li {
+  margin: 10px;
+}
+
+.stat {
+  display: inline-block;
+  margin: 0px 2px;
+}
+

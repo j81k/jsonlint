@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block content %}
+	<form action="" method="post" name="json">
+      {{ data.form.hidden_tag() }}
+      	{% if data.message %}
+      		<input type="hidden" id="err-line-no" value="{{ data.message.line }}" />
+      	{% endif %}
+		<div id="json-wrapper">
+			<div id="json-block">
+				<div id="parsed-data">{{ data.json_inp }}</div>
+				<div id="line-nos"></div>
+				<div id="json-inp-block">{{ data.form.json_inp }}</div>
+				<div id="stats">
+					<div>
+						<div id="stats-goto" class="stat">
+							<span>Goto: </span><input type="text" value="1" maxlength="6" />
+						</div>
+						<div id="stats-tab" class="stat">
+							<span>TAB: </span>
+							<select name="stats_tab_select">
+								{% for indt in data.indents %}
+									<option value="{{ indt }}" {{ 'selected' if indt|int() == data.indent|int() else '' }}>{{ indt }}</option>
+								{% endfor %}
+							</select>
+						</div>
+						<div id="stats-line" class="stat">Line: <span></span></div>
+						<div id="stats-column" class="stat">Column: <span></span></div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		
+		<div class="ctrls">
+			<input type="submit" class="btn primary" value="Submit" />
+			<input type="reset" id="clear-btn" class="btn" value="Clear" />
+		</div>
+	</form>	
+{% endblock %}
+
+  					
+
+  			

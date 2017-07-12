@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Creditmantri - JSON Validator</title>
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <script type="text/javascript" src="../static/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../static/js/script.js"></script>
+
+  </head>
+  <body>
+      <header>
+        <div id="header-top">
+          <div>
+            <h4>Creditmantri - JSON Validator</h4>
+          </div>
+
+          <div id="welcome-msg">
+              {% if data.user %}  
+                <h3>Welcome {{ data.user.name }}!</h3>
+              {% endif %}
+          </div>
+        </div>  
+      </header>
+
+  		<section id="wrapper">
+          {% if data.message %}
+            <div class="msg-box {{ data.message.type }}">
+                <ul>
+                  <li>{{ data.message.type.upper() }}: {{ data.message.text }}</li>
+
+                  {% if data.message.type == 'error' %}
+                      <li>Line : {{ data.message.line }}</li>
+                      <li>Column : {{ data.message.column }}</li>
+                  {% endif %}    
+                </ul>
+            </div>         
+          {% endif %}
+          
+          {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              <div class="msg-box">
+                <ul>
+                  {% for msg in messages %}
+                    <li>{{ msg }}</li>
+                  {% endfor %}  
+                </ul>
+              </div>  
+            {% endif %}  
+          {% endwith %}
+
+
+  			<section id="content">
+          {% block content %}{% endblock %}
+        </section>
+        
+      </section>
+      
+      <footer>
+         <div>&copy; Copyrighted 2017</div> 
+      </footer>    
+  </body>
+</html> 
