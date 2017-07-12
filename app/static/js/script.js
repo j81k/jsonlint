@@ -19,8 +19,7 @@ function setStat() {
     }
     
     scrolling = false;
-    $('.line-no').show();
-
+    
     return {
       'lineNo'  : lineNo,
       'columnNo': colPos+1 

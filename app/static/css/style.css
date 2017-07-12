@@ -91,7 +91,6 @@ footer {
 .line-no {
   line-height: 15px;
   font-size: small;
-  display: none;
 }
 
 .line-no.active {

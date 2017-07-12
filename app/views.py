@@ -65,7 +65,7 @@ def index():
 					content = json.loads(content, object_pairs_hook=dict_raise_on_duplicates)
 				else :
 					content = json.loads(content, object_pairs_hook=dict_allow_on_duplicates)
-				
+					
 				content = json.dumps(content, indent=int(data['indent']), sort_keys=True)
 				content = content.replace('\r\n', '')
 			except ValueError as e:
