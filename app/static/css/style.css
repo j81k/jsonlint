@@ -166,6 +166,17 @@ footer {
   border: 1px solid #ccc;
 }
 
+#more-ctrls {
+  color: #999;
+  margin: 20px 0px;
+}
+
+#more-ctrls > div {
+  margin-top: 5px;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
 .error {
   color: #f33;
   background: rgba(255, 100, 100, 0.09);
@@ -198,7 +209,4 @@ footer {
   margin: 0px 2px;
 }
 
-#more-ctrls {
-  color: #999;
-  margin: 20px 0px;
-}
+

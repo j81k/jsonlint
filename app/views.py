@@ -58,16 +58,18 @@ def index():
 		data['indent'] = request.form.get('stats_tab_select')
 
 		try :
-			# {"data": {"name": "Ui","user": "Assk","user": "kio"}}
+			# {"data": {"zname": "Ui","user": "Assk","auser": "kio"}}
 
 			try :
+				
 				if data['form'].duplicate_key.data :
 					content = json.loads(content, object_pairs_hook=dict_raise_on_duplicates)
 				else :
 					content = json.loads(content, object_pairs_hook=dict_allow_on_duplicates)
-					
-				content = json.dumps(content, indent=int(data['indent']), sort_keys=True)
+
+				content = json.dumps(content, indent=int(data['indent']), sort_keys=data['form'].sort_key.data)
 				content = content.replace('\r\n', '')
+
 			except ValueError as e:
 				#pass
 				content = content.replace('\n', '')

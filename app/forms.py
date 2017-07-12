@@ -9,5 +9,6 @@ class LoginForm(Form):
 
 class InputForm(Form):
 	duplicate_key = BooleanField('duplicate_key', default=True)
+	sort_key = BooleanField('sort_key', default=False)
 	json_inp = TextAreaField('json_inp', validators=[DataRequired()], default='{"data":{"user": "Ashok"}}')
 
